@@ -4,5 +4,8 @@
   "private": true,
   "nx": {
     "name": "frontend"
+  },
+  "dependencies": {
+    "react-chatbotify": "^2.0.0-beta.32"
   }
 }
