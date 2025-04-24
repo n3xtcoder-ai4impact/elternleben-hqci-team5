@@ -1,9 +1,9 @@
-import ChatBot from "react-chatbotify";
+import { ElternlebenChatBot } from "./ElternlebenChatBot";
 
 export function App() {
   return (
     <div>
-      <ChatBot/>
+      <ElternlebenChatBot/>
     </div>
   );
 }
