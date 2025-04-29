@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AZURE_OPENAI_ENDPOINT": "https://<your-openai-endpoint>.openai.azure.com/",
+    "AZURE_OPENAI_DEPLOYMENT": "<your-deployment-name>",
+    "AZURE_OPENAI_API_KEY": "<your-api-key>"
+  }
+}
