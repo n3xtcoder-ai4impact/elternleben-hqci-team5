@@ -1,0 +1,12 @@
+{
+  "name": "@poc/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "frontend"
+  },
+  "dependencies": {
+    "openai": "^4.95.0",
+    "react-chatbotify": "^2.0.0-beta.32"
+  }
+}

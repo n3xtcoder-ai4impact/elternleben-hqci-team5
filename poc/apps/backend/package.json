@@ -1,0 +1,33 @@
+{
+  "name": "@poc/backend",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "serve": {
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@poc/backend:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@poc/backend:build:development"
+          },
+          "production": {
+            "buildTarget": "@poc/backend:build:production"
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    }
+  }
+}
