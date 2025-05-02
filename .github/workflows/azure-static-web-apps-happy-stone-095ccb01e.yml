@@ -31,7 +31,7 @@ jobs:
           app_location: "/apps/frontend" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "/apps/frontend/dist" # Built app content directory - optional
-          app_build_command: "npx nx build frontend" # Command to build your app - optional
+          app_build_command: "nx build frontend" # Command to build your app - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
