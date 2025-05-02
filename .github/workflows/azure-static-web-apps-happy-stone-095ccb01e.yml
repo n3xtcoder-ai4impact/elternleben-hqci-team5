@@ -31,6 +31,7 @@ jobs:
           app_location: "/poc/apps/frontend" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "/poc/apps/frontend/dist" # Built app content directory - optional
+          app_build_command: "nx build frontend" # Command to build your app - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
