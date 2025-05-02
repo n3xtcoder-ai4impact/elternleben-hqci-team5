@@ -1,12 +1,13 @@
 {
+  "scriptFile": "index.js",
   "bindings": [
     {
       "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["post"],
-      "route": "chat"
+      "methods": ["get"],
+      "route": "ping"
     },
     {
       "type": "http",
