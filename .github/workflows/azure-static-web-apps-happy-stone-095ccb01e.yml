@@ -16,28 +16,31 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
-        with:
-          submodules: false
-          lfs: false
+
       - uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: 'npm'
+
       - run: npm ci
+
+      # ✅ Build both frontend and backend
+      - run: npx nx build frontend
+      - run: npx nx build backend
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_HAPPY_STONE_095CCB01E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "apps/frontend" # App source code path
-          api_location: "apps/backend" # Api source code path - optional
-          output_location: "dist" # Built app content directory - optional
-          app_build_command: "npx nx build frontend" # Command to build your app - optional
-          ###### End of Repository/Build Configurations ######
+
+          ###### Corrected paths 👇
+          app_location: "apps/frontend/dist"       # ✅ Correct Nx build output
+          api_location: "dist/apps/backend"         # ✅ Compiled Azure Function output
+          output_location: ""                       # ❌ not needed if app_location is already built
+          ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

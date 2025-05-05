@@ -1,18 +1,20 @@
 {
   "name": "backend",
   "projectType": "application",
-  "sourceRoot": "apps/backend",
+  "sourceRoot": "apps/backend/src",
   "targets": {
-    "serve": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "func start --script-root=apps/backend"
-      }
-    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "echo 'Azure Functions require no build step'"
+        "command": "npm run build",
+        "cwd": "apps/backend"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "func start --script-root=../dist",
+        "cwd": "apps/backend"
       }
     }
   },

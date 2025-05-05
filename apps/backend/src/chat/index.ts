@@ -1,6 +1,7 @@
-const axios = require('axios');
+import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+import axios from 'axios';
 
-module.exports = async function (context, req) {
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     const userInput = (req.body && req.body.message) || "";
 
     if (!userInput) {
@@ -39,11 +40,13 @@ module.exports = async function (context, req) {
             status: 200,
             body: { reply: botReply }
         };
-    } catch (error) {
-        console.error("Azure OpenAI call error:", error.response?.data || error.message);
+    } catch (error: unknown) {
+        console.error("Azure OpenAI call error:", error);
         context.res = {
             status: 500,
             body: "Error communicating with Azure OpenAI."
         };
     }
 };
+
+export default httpTrigger;
