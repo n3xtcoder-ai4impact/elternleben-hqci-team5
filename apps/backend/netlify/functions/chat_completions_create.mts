@@ -20,7 +20,9 @@ export default async (req: Request, context: Context) => {
 
   const client = new AzureOpenAI({ endpoint, apiKey, apiVersion, deployment });
 
-  const { userInput } = await req.json();
+  const request = await req.json();
+  console.log(request);
+  const userInput = request.userInput;
   const result = await client.chat.completions.create({
     messages: [
       {
