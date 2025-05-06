@@ -74,7 +74,6 @@ export default async (req: Request, context: Context) => {
           query_type: 'simple',
           in_scope: true,
           role_information: prompt,
-          query: userInput,
           strictness: 3,
           top_n_documents: 3,
         },
