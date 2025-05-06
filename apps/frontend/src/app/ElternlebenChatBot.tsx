@@ -52,15 +52,10 @@ export const ElternlebenChatBot = () => {
 					stop: null,
 				}),
 			});
-			const json = await response.json();
-			console.log(json);
-			// openai.chat.completions.create({
-			// 	// conversation history is not shown in this example as message length is kept to 1
-			// 	messages: [{ role: 'user', content: params.userInput }],
-			// 	model: modelType,
-			// });
+			const chatCompletion = await response.json();
+			console.log(chatCompletion);
 
-			// await params.injectMessage(chatCompletion.choices[0].message.content);
+			await params.injectMessage(chatCompletion.choices[0].message.content);
 		} catch (error) {
 			await params.injectMessage("Unable to load model, is your API Key valid?");
 			hasError = true;
