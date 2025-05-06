@@ -28,30 +28,15 @@ export default async (req: Request, context: Context) => {
     messages: [
       {
         role: 'system',
-        content: [
-          {
-            type: 'text',
-            text: prompt,
-          },
-        ],
+        content: prompt,
       },
       {
         role: 'user',
-        content: [
-          {
-            type: 'text',
-            text: userInput,
-          },
-        ],
+        content: userInput,
       },
       {
         role: 'assistant',
-        content: [
-          {
-            type: 'text',
-            text: 'Die angeforderte Information ist in den bereitgestellten Daten nicht enthalten. Bitte stelle deine Frage einem unserer Experten über unsere E-Mail-Beratung unter: https://www.elternleben.de/ueber-stell-uns-deine-frage/. Kann ich dir sonst noch irgendwie weiterhelfen?',
-          },
-        ],
+        content: 'Die angeforderte Information ist in den bereitgestellten Daten nicht enthalten. Bitte stelle deine Frage einem unserer Experten über unsere E-Mail-Beratung unter: https://www.elternleben.de/ueber-stell-uns-deine-frage/. Kann ich dir sonst noch irgendwie weiterhelfen?',
       },
     ],
     model: 'gpt-4.1',
