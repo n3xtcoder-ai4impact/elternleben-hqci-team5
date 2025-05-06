@@ -2,27 +2,65 @@ import ChatBot, { Flow, Settings, Styles } from "react-chatbotify";
 import OpenAI from 'openai';
 
 export const ElternlebenChatBot = () => {
-	const apiKey = "";
-	const modelType = "gpt-3.5-turbo";
 	let hasError = false;
 
 	// example openai conversation
 	// you can replace with other LLMs such as Google Gemini
 	const call_openai = async (params) => {
 		try {
-			const openai = new OpenAI({
-				apiKey: apiKey,
-				dangerouslyAllowBrowser: true // required for testing on browser side, not recommended
+			const response = await fetch('/.netlify/functions/chat_completions_create', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					messages: [
+						{
+							role: 'system',
+							content: [
+								{
+									type: 'text',
+									text: prompt,
+								},
+							],
+						},
+						{
+							role: 'user',
+							content: [
+								{
+									type: 'text',
+									text: params.userInput,
+								},
+							],
+						},
+						{
+							role: 'assistant',
+							content: [
+								{
+									type: 'text',
+									text: 'Die angeforderte Information ist in den bereitgestellten Daten nicht enthalten. Bitte stelle deine Frage einem unserer Experten über unsere E-Mail-Beratung unter: https://www.elternleben.de/ueber-stell-uns-deine-frage/. Kann ich dir sonst noch irgendwie weiterhelfen?',
+								},
+							],
+						},
+					],
+					model: 'gpt-4.1',
+					max_tokens: 800,
+					temperature: 1,
+					top_p: 1,
+					frequency_penalty: 0,
+					presence_penalty: 0,
+					stop: null,
+				}),
 			});
+			const json = await response.json();
+			console.log(json);
+			// openai.chat.completions.create({
+			// 	// conversation history is not shown in this example as message length is kept to 1
+			// 	messages: [{ role: 'user', content: params.userInput }],
+			// 	model: modelType,
+			// });
 
-			// for streaming responses in parts (real-time), refer to real-time stream example
-			const chatCompletion = await openai.chat.completions.create({
-				// conversation history is not shown in this example as message length is kept to 1
-				messages: [{ role: 'user', content: params.userInput }],
-				model: modelType,
-			});
-
-			await params.injectMessage(chatCompletion.choices[0].message.content);
+			// await params.injectMessage(chatCompletion.choices[0].message.content);
 		} catch (error) {
 			await params.injectMessage("Unable to load model, is your API Key valid?");
 			hasError = true;
