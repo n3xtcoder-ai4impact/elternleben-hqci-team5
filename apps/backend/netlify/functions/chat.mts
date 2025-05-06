@@ -42,7 +42,3 @@ export default async (req: Request, context: Context) => {
     headers: { 'Content-Type': 'application/json' },
   });
 }
-
-main().catch((err) => {
-  console.error('The sample encountered an error:', err);
-});
