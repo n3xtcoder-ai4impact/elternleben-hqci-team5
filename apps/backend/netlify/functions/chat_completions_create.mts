@@ -16,6 +16,8 @@ export default async (req: Request, context: Context) => {
   const apiVersion = '2025-01-01-preview';
   const deployment = 'gpt-4.1'; // This must match your deployment name
 
+  const search_key = process.env['SEARCH_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
+
   const client = new AzureOpenAI({ endpoint, apiKey, apiVersion, deployment });
 
   const { userInput } = await req.json();
@@ -64,16 +66,16 @@ export default async (req: Request, context: Context) => {
         parameters: {
           filter: null,
           endpoint:
-            'https://subad-m9xb2ofp-eastus2.openai.azure.com/',
+            'https://elternlebenpocteam5.search.windows.net',
           index_name: 'index3-94p7ylg9cd',
           semantic_configuration: '',
-          // authentication: {
-          //   type: 'api_key',
-          //   key: 'search_key',
-          // },
+          authentication: {
+             type: 'api_key',
+             key: search_key,
+          },
           query_type: 'simple',
           in_scope: true,
-          role_information: prompt,
+          // role_information: prompt,
           strictness: 3,
           top_n_documents: 3,
         },
