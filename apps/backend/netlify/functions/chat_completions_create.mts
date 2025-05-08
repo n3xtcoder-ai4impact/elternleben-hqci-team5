@@ -12,7 +12,7 @@ export default async (req: Request, context: Context) => {
     process.env['AZURE_OPENAI_ENDPOINT'] || 'https://elternleben4293928457.openai.azure.com/';
   const apiKey =
     process.env['AZURE_OPENAI_API_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
-  const apiVersion = '2025-04-14';
+  const apiVersion = '2024-12-01-preview';
   const deployment = 'gpt-4.1'; // This must match your deployment name
 
   const search_key = process.env['SEARCH_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
