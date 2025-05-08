@@ -9,11 +9,10 @@ const prompt = `Du bist Leni, ein empathischer, digitaler Kundenservice-Chatbot 
 
 export default async (req: Request, context: Context) => {
   const endpoint =
-    process.env['AZURE_OPENAI_ENDPOINT'] ||
-    'https://subad-m9xb2ofp-eastus2.openai.azure.com/';
+    process.env['AZURE_OPENAI_ENDPOINT'] || '';
   const apiKey =
     process.env['AZURE_OPENAI_API_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
-  const apiVersion = '2025-01-01-preview';
+  const apiVersion = '2025-04-14';
   const deployment = 'gpt-4.1'; // This must match your deployment name
 
   const search_key = process.env['SEARCH_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
@@ -52,8 +51,8 @@ export default async (req: Request, context: Context) => {
         parameters: {
           filter: null,
           endpoint:
-            'https://elternlebenpocteam5.search.windows.net',
-          index_name: 'index3-94p7ylg9cd',
+            'https://elternleben.search.windows.net',
+          index_name: 'index',
           semantic_configuration: '',
           authentication: {
              type: 'api_key',
