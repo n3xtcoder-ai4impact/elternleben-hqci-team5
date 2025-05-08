@@ -9,7 +9,7 @@ const prompt = `Du bist Leni, ein empathischer, digitaler Kundenservice-Chatbot 
 
 export default async (req: Request, context: Context) => {
   const endpoint =
-    process.env['AZURE_OPENAI_ENDPOINT'] || '';
+    process.env['AZURE_OPENAI_ENDPOINT'] || 'https://elternleben4293928457.openai.azure.com/';
   const apiKey =
     process.env['AZURE_OPENAI_API_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
   const apiVersion = '2025-04-14';
