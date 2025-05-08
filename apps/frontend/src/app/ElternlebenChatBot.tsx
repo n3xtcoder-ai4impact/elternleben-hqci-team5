@@ -91,7 +91,8 @@ export const ElternlebenChatBot = () => {
     headerStyle: {
       background: 'rgb(255, 255, 255)',
       color: 'rgb(76, 76, 76)',
-      boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 12px 0px',
+      boxShadow: 'rgba(0, 0, 0, 0.5) 0px 2px 5px 0px',
+      zIndex: 99,
     },
     botBubbleStyle: {
       backgroundColor: 'rgb(237, 237, 237)',
