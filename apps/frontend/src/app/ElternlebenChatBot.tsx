@@ -66,7 +66,7 @@ export const ElternlebenChatBot = () => {
     header,
     botBubble: {
       animate: true,
-      simStream: true,
+      simStream: false,
       showAvatar: true,
       avatar: 'assets/Check_nobg_75.png',
     },
