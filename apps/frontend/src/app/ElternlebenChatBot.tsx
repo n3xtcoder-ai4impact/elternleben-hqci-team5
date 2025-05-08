@@ -67,6 +67,8 @@ export const ElternlebenChatBot = () => {
     botBubble: {
       animate: true,
       simStream: true,
+      showAvatar: true,
+      avatar: 'assets/Check_nobg_75.png',
     },
     chatWindow: {
       showScrollbar: true,
@@ -82,8 +84,6 @@ export const ElternlebenChatBot = () => {
   const elternlebenStyle = {
     background: 'rgb(85, 165, 50)',
     color: 'rgb(255, 255, 255)',
-    fontFamily: '"Open Sans", Arial, sans-serif',
-    fontSize: '18px',
   };
   const styles: Styles = {
     bodyStyle: elternlebenStyle,
@@ -122,6 +122,8 @@ export const ElternlebenChatBot = () => {
     },
     chatWindowStyle: {
       borderRadius: '0px',
+      width: '100%',
+      height: '100vh',
     },
   };
 
