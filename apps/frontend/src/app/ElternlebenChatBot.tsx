@@ -24,18 +24,18 @@ export const ElternlebenChatBot = () => {
       await params.injectMessage(chatCompletion.choices[0].message.content);
     } catch (error) {
       await params.injectMessage(
-        'Unable to load model, is your API Key valid?'
+        'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
       );
       hasError = true;
     }
   };
   const flow: Flow = {
+    // start: {
+    //   message: 'Wie kann ich Ihnen helfen?',
+    //   path: 'loop',
+    //   isSensitive: false,
+    // },
     start: {
-      message: 'Wie kann ich Ihnen helfen?',
-      path: 'loop',
-      isSensitive: false,
-    },
-    loop: {
       message: async (params) => {
         await call_openai(params);
       },
@@ -43,7 +43,7 @@ export const ElternlebenChatBot = () => {
         if (hasError) {
           return 'start';
         }
-        return 'loop';
+        return 'start';
       },
     },
   };
