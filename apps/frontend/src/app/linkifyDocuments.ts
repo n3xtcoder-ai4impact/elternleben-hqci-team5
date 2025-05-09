@@ -23,14 +23,15 @@ export function linkifyDocuments(message: any) {
   console.log('context.citations', context?.citations);
   const docMap = getCitationMap(context?.citations ?? []);
   console.log('docMap', docMap);
-  const replacedContent = content.replace(/\[(doc\d+)\]/g, (match: string) => {
+  const replacedContent = content.replace(/\[(doc\d+)\]/g, (match: string, docId: string) => {
     console.log('  match', match);
+    console.log('  docId', docId);
 
-    const metadata = docMap[match];
+    const metadata = docMap[docId];
     console.log('  metadata', metadata);
     if (metadata) {
       const { title, url } = metadata;
-      return `[${title}](${url})`;
+      return `([${title}](${url}))`;
     } else {
       return match;
     }
