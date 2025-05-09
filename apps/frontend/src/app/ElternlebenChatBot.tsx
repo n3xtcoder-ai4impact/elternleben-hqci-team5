@@ -38,6 +38,11 @@ export const ElternlebenChatBot = () => {
       const uniqueIds = [...new Set(citationIds)];
       console.log('uniqueIds', uniqueIds);
 
+      const citationMap = content.citations.map((citation, index: number) => {
+        return {name: `doc${index}`, description: citation.content.title, url: citation.content.url}
+      })
+      console.log('citationMap', citationMap);
+
       await params.injectMessage(content);
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
@@ -102,16 +107,16 @@ export const ElternlebenChatBot = () => {
       boxShadow: 'rgba(0, 0, 0, 0.5) 0px 2px 5px 0px',
       zIndex: 99,
     },
-    botBubbleStyle: {
-      backgroundColor: 'rgb(237, 237, 237)',
+    userBubbleStyle: {
+      backgroundColor: 'lightgray',
       color: 'rgb(76, 76, 76)',
-      borderRadius: '4px',
+      borderRadius: '6px',
       boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 12px 0px',
     },
-    userBubbleStyle: {
+    botBubbleStyle: {
       backgroundColor: 'rgb(255, 255, 255)',
       color: 'rgb(76, 76, 76)',
-      borderRadius: '4px',
+      borderRadius: '6px',
       boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 12px 0px',
     },
     sendButtonStyle: {
