@@ -1,22 +1,19 @@
 import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
-import OpenAI from 'openai';
 
 import initialMessages from './initialMessages';
 import { useState } from 'react';
 
 export const ElternlebenChatBot = () => {
-
   const [messages, setMessages] = useState(initialMessages);
-  
-  
-  let hasError = false;
 
-  // example openai conversation
-  // you can replace with other LLMs such as Google Gemini
   const call_openai = async (params) => {
-    console.log(params);
-    setMessages(messages => [...messages, { role: 'user', content: params.userInput }])
+    console.log('params', params);
+    const messagesWithUserInput = [
+      ...messages,
+      { role: 'user', content: params.userInput },
+    ];
     try {
+      console.log('messagesWithUserInput', messagesWithUserInput);
       const response = await fetch(
         '/.netlify/functions/chat_completions_create',
         {
@@ -24,38 +21,32 @@ export const ElternlebenChatBot = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ messages }),
+          body: JSON.stringify({ messages: messagesWithUserInput }),
         }
       );
       const chatCompletion = await response.json();
       console.log(chatCompletion);
 
-      setMessages(messages => [...messages, { role: 'assistant', content: chatCompletion.choices[0].message.content }]) 
-      await params.injectMessage(chatCompletion.choices[0].message.content);
-      
+      const content = chatCompletion.choices[0].message.content;
+      const messagesWithUserInputAndResponse = [
+        ...messagesWithUserInput,
+        { role: 'assistant', content },
+      ];
+      console.log('messagesWithUserInputAndResponse', messagesWithUserInputAndResponse);
+      await params.injectMessage(content);
+      setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
       await params.injectMessage(
         'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
       );
-      hasError = true;
     }
   };
   const flow: Flow = {
-    // start: {
-    //   message: 'Wie kann ich Ihnen helfen?',
-    //   path: 'loop',
-    //   isSensitive: false,
-    // },
     start: {
       message: async (params) => {
         await call_openai(params);
       },
-      path: () => {
-        if (hasError) {
-          return 'start';
-        }
-        return 'start';
-      },
+      path: 'start',
     },
   };
 
