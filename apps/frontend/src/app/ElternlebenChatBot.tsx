@@ -2,9 +2,12 @@ import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
 
 import initialMessages from './initialMessages';
 import { useState } from 'react';
-import { parse } from 'yaml';
+import MarkdownRenderer, { MarkdownRendererBlock } from '@rcb-plugins/markdown-renderer';
 
 export const ElternlebenChatBot = () => {
+
+  const plugins = [MarkdownRenderer()];
+
   const [messages, setMessages] = useState(initialMessages);
 
   const call_openai = async (params) => {
@@ -55,7 +58,8 @@ export const ElternlebenChatBot = () => {
         await call_openai(params);
       },
       path: 'start',
-    },
+      renderMarkdown: ["BOT", "USER"]
+    } as MarkdownRendererBlock,
   };
 
   const header = {
@@ -76,7 +80,6 @@ export const ElternlebenChatBot = () => {
     header,
     botBubble: {
       animate: true,
-      simStream: false,
       showAvatar: true,
       avatar: 'assets/Check_nobg_75.png',
     },
@@ -138,5 +141,5 @@ export const ElternlebenChatBot = () => {
     },
   };
 
-  return <ChatBot settings={settings} styles={styles} flow={flow} />;
+  return <ChatBot settings={settings} styles={styles} flow={flow} plugins={plugins}/>;
 };
