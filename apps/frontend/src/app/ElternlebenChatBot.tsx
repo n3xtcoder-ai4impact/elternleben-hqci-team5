@@ -1,13 +1,21 @@
 import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
 import OpenAI from 'openai';
 
+import initialMessages from './initialMessages';
+import { useState } from 'react';
+
 export const ElternlebenChatBot = () => {
+
+  const [messages, setMessages] = useState(initialMessages);
+  
+  
   let hasError = false;
 
   // example openai conversation
   // you can replace with other LLMs such as Google Gemini
   const call_openai = async (params) => {
     console.log(params);
+    setMessages(messages => [...messages, { role: 'user', content: params.userInput }])
     try {
       const response = await fetch(
         '/.netlify/functions/chat_completions_create',
@@ -16,13 +24,15 @@ export const ElternlebenChatBot = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userInput: params.userInput }),
+          body: JSON.stringify({ messages }),
         }
       );
       const chatCompletion = await response.json();
       console.log(chatCompletion);
 
+      setMessages(messages => [...messages, { role: 'assistant', content: chatCompletion.choices[0].message.content }]) 
       await params.injectMessage(chatCompletion.choices[0].message.content);
+      
     } catch (error) {
       await params.injectMessage(
         'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
