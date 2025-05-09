@@ -109,7 +109,7 @@ export const ElternlebenChatBot = () => {
       zIndex: 99,
     },
     userBubbleStyle: {
-      backgroundColor: 'lightgray',
+      backgroundColor: '#E0E0E0',
       color: 'rgb(76, 76, 76)',
       borderRadius: '6px',
       boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 12px 0px',
