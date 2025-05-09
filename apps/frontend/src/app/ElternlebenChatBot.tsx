@@ -33,6 +33,11 @@ export const ElternlebenChatBot = () => {
         { role: 'assistant', content },
       ];
       console.log('messagesWithUserInputAndResponse', messagesWithUserInputAndResponse);
+
+      const citationIds = [...content.matchAll(/\[(doc\d+)\]/g)].map(match => match[1]);
+      const uniqueIds = [...new Set(citationIds)];
+      console.log('uniqueIds', uniqueIds);
+
       await params.injectMessage(content);
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
