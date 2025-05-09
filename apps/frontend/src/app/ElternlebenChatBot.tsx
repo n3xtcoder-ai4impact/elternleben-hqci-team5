@@ -100,13 +100,13 @@ export const ElternlebenChatBot = () => {
     botBubbleStyle: {
       backgroundColor: 'rgb(237, 237, 237)',
       color: 'rgb(76, 76, 76)',
-      borderRadius: '0px',
+      borderRadius: '4px',
       boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 12px 0px',
     },
     userBubbleStyle: {
       backgroundColor: 'rgb(255, 255, 255)',
       color: 'rgb(76, 76, 76)',
-      borderRadius: '0px',
+      borderRadius: '4px',
       boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 12px 0px',
     },
     sendButtonStyle: {
