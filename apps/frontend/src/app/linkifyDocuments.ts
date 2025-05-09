@@ -18,8 +18,8 @@ export const getCitationMap = (citations: any) => {
 export function linkifyDocuments(message: any) {
   const { content, context } = message;
   const docMap = getCitationMap(context?.citations ?? []);
-  const replacedContent = content.replace(/\[(doc\d+)\]/g, (match, docId) => {
-    const metadata = docMap[docId];
+  const replacedContent = content.replace(/\[(doc\d+)\]/g, (match: string) => {
+    const metadata = docMap[match];
     if (metadata) {
       const { title, url } = metadata;
       return `[${title}](${url})`;
