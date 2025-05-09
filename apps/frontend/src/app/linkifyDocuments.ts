@@ -16,8 +16,8 @@ export const getCitationMap = (citations: any) => {
 };
 
 export function linkifyDocuments(message: any) {
+  console.log('linkifyDocuments message', message);
   const { content, context } = message;
-  console.log('message', message);
   console.log('context', context);
   console.log('content', content);
   console.log('context.citations', context?.citations);
