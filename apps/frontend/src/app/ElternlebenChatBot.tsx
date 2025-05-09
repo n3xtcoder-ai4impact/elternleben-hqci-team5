@@ -3,6 +3,7 @@ import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
 import initialMessages from './initialMessages';
 import { useState } from 'react';
 import MarkdownRenderer, { MarkdownRendererBlock } from '@rcb-plugins/markdown-renderer';
+import { linkifyDocuments } from './linkifyDocuments';
 
 export const ElternlebenChatBot = () => {
 
@@ -39,11 +40,10 @@ export const ElternlebenChatBot = () => {
       ];
       console.log('messagesWithUserInputAndResponse', messagesWithUserInputAndResponse);
 
-      const citationIds = [...content.matchAll(/\[(doc\d+)\]/g)].map(match => match[1]);
-      const uniqueIds = [...new Set(citationIds)];
-      console.log('uniqueIds', uniqueIds);
+      const linkedContent = linkifyDocuments(message);
+      console.log('linkedContent', linkedContent);
 
-      await params.injectMessage(content);
+      await params.injectMessage(linkedContent);
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
       console.error('Error fetching chat completion:', error);
