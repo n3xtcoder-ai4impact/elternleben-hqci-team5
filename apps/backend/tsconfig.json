@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2015",                        // ✅ supported by Azure Functions
+    "module": "commonjs",                      // ✅ required for Node.js Azure runtime
+    "moduleResolution": "node",                // ✅ safe for CommonJS
+    "outDir": "../../dist/apps/backend",       // ✅ where compiled .js files go
+    "rootDir": "./src",
+    "noEmit": false,                           // ✅ ensure .js is emitted
+    "emitDeclarationOnly": false,              // ✅ fix your no-output issue
+    "composite": false,                        // ✅ disable Nx-style build graph
+    "declarationMap": false                    // ✅ optional, disables .d.ts.map
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "projectType": "application",
+  "sourceRoot": "apps/backend/src",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build",
+        "cwd": "apps/backend"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "func start --script-root=../dist",
+        "cwd": "apps/backend"
+      }
+    }
+  },
+  "tags": []
+}
