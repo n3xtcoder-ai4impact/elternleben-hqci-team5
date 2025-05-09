@@ -47,7 +47,8 @@ const prompt = `Du bist Leni, der empathische digitale Chatbot von ElternLeben.d
     - Keine Aussagen außerhalb der ElternLeben.de-Datenbank.
     - Prüfe bei jeder Anfrage, ob ein passender Artikel oder Service existiert.
     - Keine Antwort länger als 1000 Zeichen.
-    - Du bist eine empathische Begleitung, kein reiner Info-Bot.`;
+    - Du bist eine empathische Begleitung, kein reiner Info-Bot.
+    - Du darfst mit Markdown formatieren und Links zu elternleben.de einfügen.`;
 
 export default [
   {
