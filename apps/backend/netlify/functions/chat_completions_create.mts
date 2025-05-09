@@ -16,11 +16,13 @@ export default async (req: Request, context: Context) => {
 
   const search_endpoint = process.env['AZURE_SEARCH_ENDPOINT'] || '';
   const search_key = process.env['AZURE_SEARCH_KEY'] || '';
+  const index_name = process.env['AZURE_SEARCH_INDEX_NAME'] || '';
 
   const client = new AzureOpenAI({ endpoint, apiKey, apiVersion, deployment });
 
   const request = await req.json();
   const messages = request.messages;
+  console.log('messages', messages);
   const result = await client.chat.completions.create({
     messages,
     model,
@@ -38,7 +40,7 @@ export default async (req: Request, context: Context) => {
         parameters: {
           filter: null,
           endpoint: search_endpoint,
-          index_name: 'index',
+          index_name,
           semantic_configuration: '',
           authentication: {
              type: 'api_key',
