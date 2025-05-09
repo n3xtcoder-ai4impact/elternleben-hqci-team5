@@ -40,15 +40,6 @@ export const ElternlebenChatBot = () => {
       const uniqueIds = [...new Set(citationIds)];
       console.log('uniqueIds', uniqueIds);
 
-      const citationMap = message?.context?.citations?.map((citation, index: number) => {
-        console.log('citation', citation);
-        const yamlText = citation?.content?.split('---')?.[1]?.replace(/\\r\\n/g, "\n");
-        const parsed = parse(yamlText || '');
-        const { author, category, description, filepath, title, url } = parsed;
-        return {name: `doc${index}`, description, title, url}
-      })
-      console.log('citationMap', citationMap);
-
       await params.injectMessage(content);
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
