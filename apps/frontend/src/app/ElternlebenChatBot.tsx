@@ -36,6 +36,7 @@ export const ElternlebenChatBot = () => {
       await params.injectMessage(content);
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
+      console.error('Error fetching chat completion:', error);
       await params.injectMessage(
         'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
       );
