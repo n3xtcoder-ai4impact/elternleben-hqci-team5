@@ -36,5 +36,6 @@ export function linkifyDocuments(message: any) {
     }
   });
 
+  console.log('replacedContent', replacedContent);
   return replacedContent;
 }

@@ -40,10 +40,14 @@ export const ElternlebenChatBot = () => {
       ];
       console.log('messagesWithUserInputAndResponse', messagesWithUserInputAndResponse);
 
+      try {
       const linkedContent = linkifyDocuments(message);
       console.log('linkedContent', linkedContent);
 
       await params.injectMessage(linkedContent);
+      } catch (error) {
+        console.error('Error linking documents:', error);
+      }
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
       console.error('Error fetching chat completion:', error);
