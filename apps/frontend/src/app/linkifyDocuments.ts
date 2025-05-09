@@ -17,9 +17,17 @@ export const getCitationMap = (citations: any) => {
 
 export function linkifyDocuments(message: any) {
   const { content, context } = message;
+  console.log('message', message);
+  console.log('context', context);
+  console.log('content', content);
+  console.log('context.citations', context?.citations);
   const docMap = getCitationMap(context?.citations ?? []);
+  console.log('docMap', docMap);
   const replacedContent = content.replace(/\[(doc\d+)\]/g, (match: string) => {
+    console.log('  match', match);
+
     const metadata = docMap[match];
+    console.log('  metadata', metadata);
     if (metadata) {
       const { title, url } = metadata;
       return `[${title}](${url})`;
