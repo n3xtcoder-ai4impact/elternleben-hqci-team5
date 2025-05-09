@@ -8,10 +8,10 @@ export const ElternlebenChatBot = () => {
 
   const call_openai = async (params) => {
     console.log('params', params);
-    const messagesWithUserInput = [
+    const messagesWithUserInput = params.userInput ? [
       ...messages,
       { role: 'user', content: params.userInput },
-    ];
+    ] : messages;
     try {
       console.log('messagesWithUserInput', messagesWithUserInput);
       const response = await fetch(
