@@ -23,7 +23,7 @@ export default async (req: Request, context: Context) => {
   const request = await req.json();
   const messages = request.messages;
   console.log('messages', messages);
-  const result = await client.chat.completions.create({
+  const createArgs = {
     messages,
     model,
     max_tokens: 800,
@@ -32,8 +32,6 @@ export default async (req: Request, context: Context) => {
     frequency_penalty: 0,
     presence_penalty: 0,
     stop: null,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     data_sources: [
       {
         type: 'azure_search',
@@ -54,7 +52,9 @@ export default async (req: Request, context: Context) => {
         },
       },
     ],
-  });
+  };
+  console.log('createArgs', createArgs);
+  const result = await client.chat.completions.create(createArgs);
 
   return new Response(JSON.stringify(result), {
     headers: { 'Content-Type': 'application/json' },

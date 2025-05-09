@@ -52,6 +52,6 @@ const prompt = `Du bist Leni, der empathische digitale Chatbot von ElternLeben.d
 export default [
   {
     role: 'system',
-    content: prompt,
+    content: String(prompt),
   },
 ];
