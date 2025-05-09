@@ -75,13 +75,15 @@ Antworte empathisch:
 
 export default async (req: Request, context: Context) => {
   const endpoint =
-    process.env['AZURE_OPENAI_ENDPOINT'] || 'https://elternleben4293928457.openai.azure.com/';
+    process.env['AZURE_OPENAI_ENDPOINT'] || '';
   const apiKey =
-    process.env['AZURE_OPENAI_API_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
-  const apiVersion = '2024-12-01-preview';
-  const deployment = 'gpt-4.1'; // This must match your deployment name
+    process.env['AZURE_OPENAI_API_KEY'] || '';
+  const apiVersion = process.env['AZURE_OPENAI_API_VERSION'] || '';
+  const deployment = process.env['AZURE_OPENAI_DEPLOYMENT_NAME'] || ''
+  const model = process.env['AZURE_OPENAI_MODEL'] || ''
 
-  const search_key = process.env['SEARCH_KEY'] || '<REPLACE_WITH_YOUR_KEY_VALUE_HERE>';
+  const search_endpoint = process.env['AZURE_SEARCH_ENDPOINT'] || '';
+  const search_key = process.env['AZURE_SEARCH_KEY'] || '';
 
   const client = new AzureOpenAI({ endpoint, apiKey, apiVersion, deployment });
 
@@ -102,7 +104,7 @@ export default async (req: Request, context: Context) => {
         content: 'Die angeforderte Information ist in den bereitgestellten Daten nicht enthalten. Bitte stelle deine Frage einem unserer Experten über unsere E-Mail-Beratung unter: https://www.elternleben.de/ueber-stell-uns-deine-frage/. Kann ich dir sonst noch irgendwie weiterhelfen?',
       },
     ],
-    model: 'gpt-4.1',
+    model,
     max_tokens: 800,
     temperature: 1,
     top_p: 1,
@@ -116,8 +118,7 @@ export default async (req: Request, context: Context) => {
         type: 'azure_search',
         parameters: {
           filter: null,
-          endpoint:
-            'https://elternleben.search.windows.net',
+          endpoint: search_endpoint,
           index_name: 'index',
           semantic_configuration: '',
           authentication: {
