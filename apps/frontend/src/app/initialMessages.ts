@@ -54,4 +54,13 @@ export default [
     role: 'system',
     content: String(prompt),
   },
+  {
+    role: 'user',
+    content: '',
+  },
+  {
+    role: 'assistant',
+    content:
+      'Die angeforderte Information ist in den bereitgestellten Daten nicht enthalten. Bitte stelle deine Frage einem unserer Experten über unsere E-Mail-Beratung unter: https://www.elternleben.de/ueber-stell-uns-deine-frage/. Kann ich dir sonst noch irgendwie weiterhelfen?',
+  },
 ];
