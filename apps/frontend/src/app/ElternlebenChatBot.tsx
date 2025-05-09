@@ -7,6 +7,7 @@ export const ElternlebenChatBot = () => {
   // example openai conversation
   // you can replace with other LLMs such as Google Gemini
   const call_openai = async (params) => {
+    console.log(params);
     try {
       const response = await fetch(
         '/.netlify/functions/chat_completions_create',
