@@ -27,7 +27,8 @@ export const ElternlebenChatBot = () => {
       const chatCompletion = await response.json();
       console.log(chatCompletion);
 
-      const content = chatCompletion.choices[0].message.content;
+      const message = chatCompletion.choices[0].message;
+      const content = message.content;
       const messagesWithUserInputAndResponse = [
         ...messagesWithUserInput,
         { role: 'assistant', content },
@@ -38,7 +39,7 @@ export const ElternlebenChatBot = () => {
       const uniqueIds = [...new Set(citationIds)];
       console.log('uniqueIds', uniqueIds);
 
-      const citationMap = content.citations.map((citation, index: number) => {
+      const citationMap = message?.context?.citations?.map((citation, index: number) => {
         return {name: `doc${index}`, description: citation.content.title, url: citation.content.url}
       })
       console.log('citationMap', citationMap);
