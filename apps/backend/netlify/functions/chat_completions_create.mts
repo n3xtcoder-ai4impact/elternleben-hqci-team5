@@ -28,7 +28,7 @@ export default async (req: Request, context: Context) => {
     model,
     max_tokens: 800,
     temperature: 1,
-    top_p: 1,
+    top_p: 0.7,
     frequency_penalty: 0,
     presence_penalty: 0,
     stop: null,
