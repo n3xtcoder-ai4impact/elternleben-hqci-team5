@@ -2,6 +2,7 @@ import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
 
 import initialMessages from './initialMessages';
 import { useState } from 'react';
+import { parse } from 'yaml';
 
 export const ElternlebenChatBot = () => {
   const [messages, setMessages] = useState(initialMessages);
@@ -40,7 +41,10 @@ export const ElternlebenChatBot = () => {
       console.log('uniqueIds', uniqueIds);
 
       const citationMap = message?.context?.citations?.map((citation, index: number) => {
-        return {name: `doc${index}`, description: citation.content.title, url: citation.content.url}
+        const yamlText = citation.content.split('---')[1].replace(/\\r\\n/g, "\n");
+        const parsed = parse(yamlText);
+        const { author, category, description, filepath, title, url } = parsed;
+        return {name: `doc${index}`, description, title, url}
       })
       console.log('citationMap', citationMap);
 
