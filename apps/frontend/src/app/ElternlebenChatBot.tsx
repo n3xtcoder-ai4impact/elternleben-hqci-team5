@@ -43,14 +43,14 @@ export const ElternlebenChatBot = () => {
         messagesWithUserInputAndResponse
       );
 
-      // try {
-      // const linkedContent = linkifyDocuments(message);
-      // console.log('linkedContent', linkedContent);
-
-      // } catch (error) {
-      //   console.error('Error linking documents:', error);
-      // }
-      await params.injectMessage(content);
+      let linkedContent = content;
+      try {
+      linkedContent = linkifyDocuments(message);
+      console.log('linkedContent', linkedContent);
+      } catch (error) {
+        console.error('Error linking documents:', error);
+      }
+      await params.injectMessage(linkedContent);
       setMessages(messagesWithUserInputAndResponse);
     } catch (error) {
       console.error('Error fetching chat completion:', error);
@@ -65,7 +65,7 @@ export const ElternlebenChatBot = () => {
         await call_openai(params);
       },
       path: 'start',
-      // renderMarkdown: ["BOT", "USER"]
+      renderMarkdown: ["BOT", "USER"]
     } as MarkdownRendererBlock,
   };
 
@@ -101,8 +101,8 @@ export const ElternlebenChatBot = () => {
     footer: {
       buttons: [],
     },
-    audio: { disabled: false },
-    voice: { disabled: false },
+    audio: { disabled: false, language: 'de-DE' },
+    voice: { disabled: false, language: 'de-DE' },
   };
 
   const elternlebenStyle = {
