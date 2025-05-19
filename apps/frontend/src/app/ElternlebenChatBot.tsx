@@ -83,7 +83,7 @@ export const ElternlebenChatBot = () => {
     chatHistory: {
       disabled: false,
       viewChatHistoryButtonText: 'Chatverlauf',
-      autoLoad: true,
+      // autoLoad: true,
       storageKey: 'example_llm_conversation',
     },
     header,
@@ -152,5 +152,5 @@ export const ElternlebenChatBot = () => {
     },
   };
 
-  return <ChatBot settings={settings} styles={styles} flow={flow} />;
+  return <ChatBot settings={settings} styles={styles} flow={flow} plugins={plugins} />;
 };
