@@ -1,7 +1,7 @@
-import { parse } from "yaml";
-import { linkifyDocuments } from "./linkifyDocuments";
+import { parse } from 'yaml';
+import { linkifyDocuments } from './linkifyDocuments';
 
-const response = {
+const response1 = {
   id: '42c0b2d0-9bc0-4f84-af57-e79f3a36bb90',
   model: 'gpt-4.1',
   created: 1746798098,
@@ -52,11 +52,67 @@ const response = {
   system_fingerprint: 'fp_3dfb47c1f3',
 };
 
-const message = response.choices[0].message;
+const response2 = {
+  id: 'ff92b546-e60c-408e-a9f0-80e38a32f567',
+  model: 'gpt-4.1',
+  created: 1747641732,
+  object: 'extensions.chat.completion',
+  choices: [
+    {
+      index: 0,
+      finish_reason: 'stop',
+      message: {
+        role: 'assistant',
+        content:
+          'Danke, dass du das teilst! 😊 Krimis am Abend können tatsächlich den Schlaf deines Sohnes beeinflussen. Für Kinder im Alter von zwei bis drei Jahren wird empfohlen, den Medienkonsum generell sehr gering zu halten – maximal 20-30 Minuten altersgerechte Sendungen pro Tag. Besonders wichtig ist aber, dass Kinder vor dem Schlafengehen keine Medien nutzen, da das Einschlafen und Durchschlafen dadurch viel schwieriger wird. Die spannenden und manchmal auch beängstigenden Inhalte von Krimis können Kinder zusätzlich aufwühlen und es ihnen schwer machen, zur Ruhe zu kommen [doc1].\n\nMein Tipp: Versucht, mindestens eine Stunde vor dem Zubettgehen auf Medien zu verzichten und stattdessen gemeinsam ein ruhiges Abendritual zu gestalten, z. B. lesen, kuscheln oder leise Musik hören. Das hilft deinem Sohn, besser zur Ruhe zu kommen und früher einzuschlafen 💛[doc1]. \n\nMöchtest du noch mehr Tipps zu Abendritualen oder habt ihr es schon mal mit anderen Einschlafhilfen probiert?',
+        end_turn: true,
+        context: {
+          citations: [
+            {
+              content:
+                "---\r\nauthor: ''\r\ncategory:\r\n- kleinkind\r\n- gesundheit-ernaehrung\r\ncrawled_at: '2025-03-05T20:22:57.731858'\r\ndescription: 'Unruhige Nächte mit Kleinkindern? Wie Kinder im Alter von zwei bis fünf\r\n  Jahren gut schlafen können: Einschlaf-Tipps von Melanie Schüer auf ElternLeben.de'\r\nfilename: schlaftipps-fuer-kleinkinder.md\r\nfilepath: elternleben/kleinkind/gesundheit-ernaehrung/schlaftipps-fuer-kleinkinder.md\r\ntitle: Einschlaf-Tipps für Kinder von zwei bis fünf Jahren\r\nurl: https://www.elternleben.de/kleinkind/gesundheit-ernaehrung/schlaftipps-fuer-kleinkinder/\r\n---\r\n\r\n#  Einschlaf-Tipps für Kinder von zwei bis fünf Jahren\r\n\r\nViele gute Anregungen für erholsamere Nächte im Baby-Alter findest du in\r\nunserem Artikel **[Die ANGEL-Schlaf-\r\nMethode](https://www.elternleben.de/baby/babyschlaf/baby-schlaeft-unruhig/)**.\r\nAber auch im Kleinkindalter gibt es immer mal wieder Phasen, in denen Kinder\r\nabends sehr schwer zur Ruhe kommen oder die Nacht zum Tag machen. Hier findest\r\ndu ein paar Tipps zum Umgang damit.\r\n\r\nInhalt\r\n\r\n1. Ruheinseln am Tag\r\n\r\n2. Mediennutzung im Blick haben\r\n\r\n3. Gesundes Abendessen\r\n\r\n4. Beruhigende Abendrituale\r\n\r\n5. Sorgen und Ängste nehmen\r\n\r\n6. Eigene Bedürfnisse kindgerecht erklären\r\n\r\n7. Dunkelheit fördert den Schlaf\r\n\r\n8. Eigenständigkeit beim Einschlafen üben\r\n\r\n9. Erklärungen sind wichtig\r\n\r\n10. Entspannungsmethoden üben\r\n\r\n11. Buch-Tipp:\r\n\r\n12. Reference\r\n\r\nLesezeit: Etwa **5 Minuten**\r\n\r\n![Kleinkind mit Teddy im Arm\r\nschläft](/fileadmin/_processed_/7/d/csm_Tipps_Einschlaftipps_fu__r_Kleinkinder_ee932c6f7a.jpg)\r\n\r\n##  Ruheinseln am Tag\r\n\r\nÜberreizte Kinder schlafen auch abends schlecht ein. Sorge also dafür, dass\r\ndein Kind sich tagsüber auch mal ausruhen kann. Die meisten Kinder brauchen\r\nzumindest bis zum Alter von drei Jahren noch ein Mittagsschläfchen, manche\r\nauch länger. Wenn dein Kind keinen Mittagsschlaf mehr machen möchte, baue\r\nmittags zumindest eine halbe Stunde ein, in der es ruhig eine CD hört, mit dir\r\nkuschelt oder leise im Zimmer spielt. Auch eine Massage ist eine tolle\r\nMöglichkeit für eine kleine Entspannungseinheit. Wenn dein Kind tagsüber in\r\nder Kita ist, dann sorge dafür, dass die restliche Zeit zuhause so entspannt\r\nwie möglich verläuft.\r\n\r\n##  Mediennutzung im Blick haben\r\n\r\nKinder unter zwei Jahren sollten auf keinen Fall regelmäßig Medien nutzen\r\n(egal, ob Handy, Fernseher, Laptop o.ä.). Ab zwei bis drei Jahren kann man\r\nkleine Sendungen wie Calliuo, Conni, etc. erlauben – aber maximal 20-30\r\nMinuten, weil Mediennutzung für das Gehirn sehr anstrengend ist. Achtet\r\ndarauf, dass eure Kinder vor dem Schlafengehen keine Medien mehr nutzen, weil\r\ndadurch das Einschlafen und Durchschlafen sehr viel schwieriger wird.\r\n\r\n##  Gesundes Abendessen\r\n\r\nZucker sollte generell sparsam eingesetzt werden – besonders abends. Zum\r\nAbendbrot sollte es keinen Schokoaufstrich, Marmelade, Saft, Kakao o.ä. geben\r\nund auch das Müsli sollte keinen Zucker enthalten. Allerhöchstens kann mal\r\neine kleine Menge Knuspermüsli mit zuckerfreien Haferflocken gemischt werden\r\noder Naturjoghurt mit ein paar Löffeln Fruchtjoghurt mischen.  \r\n  \r\nToll schmeckt Naturjoghurt aber auch mit Apfelmus ohne Zuckerzusatz. Wenn es\r\nKakao geben soll, kann man den leicht selbst auf gesunde Art machen: Dazu z.B.\r\nHafermilch (sie hat eine natürliche Süße) warm machen und währenddessen in\r\neiner Tasse ungezuckerten Back-Kakao mit etwas Milch und Wasser glattrühren\r\nund dann in die warme Hafermilch geben. Hafer ist übrigens grundsätzlich\r\nschlaffördernd, ähnlich wie Hirse.\r\n\r\n##  Beruhigende Abendrituale\r\n\r\nLass den Abend ruhig ausklingen und gebe deinem Kind nochmal eine Extraportion\r\nZuwendung und Nähe: Lesen, Kuscheln, evtl. eine Massage, Beten, Abendlieder\r\nsingen... Sprecht nochmal ein wenig über das, was am Tag passiert ist –\r\nabschließen sollte man diese Tages-Reflexion damit, was heute schön und gut\r\ngelaufen ist. Viele Kleinkinder mögen es auch, ihren Kuscheltieren „Gute\r\nNacht“ zu sagen und dann selbst das Licht auszumachen.\r\n\r\n##  Sorgen und Ängste nehmen\r\n\r\n\naHR0cHM6Ly9lbHRlcm5sZWJlbnBvY3RlYW01dXMuYmxvYi5jb3JlLndpbmRvd3MubmV0L2VsdGVybmxlYmVuLWRlLXdlYnNpdGUvZGF0YS9jb250ZW50L2VsdGVybmxlYmVuL2tsZWlua2luZC9nZXN1bmRoZWl0LWVybmFlaHJ1bmcvc2NobGFmdGlwcHMtZnVlci1rbGVpbmtpbmRlci5tZA2",
+              title: 'schlaftipps-fuer-kleinkinder.md',
+              url: 'https://elternlebenpocteam5us.blob.core.windows.net/elternleben-de-website/data/content/elternleben/kleinkind/gesundheit-ernaehrung/schlaftipps-fuer-kleinkinder.md',
+              filepath: 'schlaftipps-fuer-kleinkinder.md',
+              chunk_id: '0',
+            },
+            {
+              content:
+                'Wenn es weint, kannst du an der Tür nochmal Sicherheit vermitteln („Ich stehe hier, alles gut!“) oder, wenn es sein muss, das Kind nochmal kurz streicheln und es dann erneut versuchen.\r\n  * Auch tagsüber kannst du die **Selbstregulation fördern**. Übe hin und wieder mit deinem Kind, sich selbst zu beschäftigen. Kindern fällt dies sehr unterschiedlich leicht oder schwer. „Trainiere“ dies für kurze Momente, z.B. ½ – 1 Minute oder in etwas längeren Einheiten, 5 – 15 Minuten.\r\n\r\n##  Gute Schlaf-Bedingungen für dein Baby schaffen\r\n\r\n  * **Je dunkler es im Raum ist, desto besser** kann der Körper das Schlafhormon Melatonin ausschütten. Verzichte also möglichst auf ein Nachtlicht oder, wenn nötig, nutze ein rötliches.\r\n  * Zu den schlaffördernden Bedingungen zählen auch **gute Schlafenszeiten** : Kleinkinder im zweiten Lebensjahr brauchen noch einen Mittagsschlaf. Der sollte in der Regel nicht länger als ca. 1,5 – 2,5 Stunden dauern und mindestens 3,5 Stunden vor dem Abendschlaf beendet sein.\r\n  * Auch **entspannte Eltern** sind Teil der schlaffördernden Bedingungen. Es gehört zur Fürsorge für das Kind, auch gut für dich selbst zu sorgen! Hast du genügend Ruhepausen? Wenn nicht, wen könntest du um Unterstützung bitten? Es gibt auch Ehrenamtlichen-Projekte wie wellcome, wo geschulte Ehrenamtliche regelmäßig dein Kind betreuen und Entlastung anbieten.\r\n  * **Medienkonsum** : Es ist wichtig, diesen im Blick zu haben: Kinder sollten frühestens mit zwei Jahren kurze Videos (max. 20 Minuten pro Tag) ansehen. Sind jedoch ältere Geschwister da, lässt es sich nicht immer vermeiden, dass es auch mal anders läuft. Das ist, wenn es nicht ständig vorkommt, keine Katastrophe, aber ganz wichtig ist: Keinen Bildschirmkonsum in den letzten 3 Stunden vor dem Schlafengehen. Gute-Nacht-Musik sollte ruhig, entspannend und nicht hektisch sein.\r\n  * **Nahrung:** Gesunde, schlaffördernde Nahrung ist sehr empfehlenswert: Mit Zucker sollte man bei Kleinkindern sehr zurückhaltend sein und gerade am Abend sollte man auf gesüßtes Essen möglichst verzichten. Dazu gehören auch Fruchtsäfte oder süße Joghurts. Besonders positiv wirkt sich Hafer auf den Schlaf aus.\r\n\r\n##  Besser einschlafen mit der ANGEL-Schlafmethode\r\n\r\nViele Eltern merken, dass das Baby (nachts) unruhig schläft. Es findet keine\r\nRuhe und nicht den so ersehnten Schlaf. Das zehrt an den Nerven, sodass man\r\nsich schnell fragt: Was kann ich tun, damit mein Baby besser einschläft?\r\nDiesen essenziellen Fragen des frühen Elternlebens widmet sich die ANGEL-\r\nMethode. In dieser sind 6 praktische Schlafmethoden für Babys vereint. Die\r\n**[ANGEL-Schlafmethode](https://www.elternleben.de/baby/babyschlaf/baby-\r\nschlaeft-unruhig/)** liefert wirksame Ratschläge und sanfte Wege hin zu einem\r\nbesseren Einschlafen des Babys.\r\n\r\n##  Besser einschlafen mit Körpertherapie\r\n\r\nUnruhige oder schreiende Babys lassen Eltern meist selbst sofort angespannt\r\nund unruhig werden. Dies passiert ganz automatisch. Als Einschlaf- und\r\nBeruhigungshilfe können **[körpertherapeutische\r\nMethoden](https://www.elternleben.de/baby/babyschlaf/koerpertherapie/)** Babys\r\nund Eltern die ersehnte Entspannung bringen.\r\n\r\n\n\naHR0cHM6Ly9lbHRlcm5sZWJlbnBvY3RlYW01dXMuYmxvYi5jb3JlLndpbmRvd3MubmV0L2VsdGVybmxlYmVuLWRlLXdlYnNpdGUvZGF0YS9jb250ZW50L2VsdGVybmxlYmVuL2JhYnkvYmFieXNjaGxhZi9iYWJ5LXNjaGxhZWZ0LW5pY2h0Lm1k0',
+              title: 'baby-schlaeft-nicht.md',
+              url: 'https://elternlebenpocteam5us.blob.core.windows.net/elternleben-de-website/data/content/elternleben/baby/babyschlaf/baby-schlaeft-nicht.md',
+              filepath: 'baby-schlaeft-nicht.md',
+              chunk_id: '0',
+            },
+            {
+              content:
+                'handelt. Es deutet nämlichist in der Lage, die Worte, die Gestik und die Mimik\r\nwährend der Unterhaltung zu deuten. Damit das Kind seine aktiven\r\nSprachfähigkeiten weiter ausbauen kann, müssen Eltern die Sprachentwicklung\r\nihres Kindes fördern. Oft passiert dies bereits intuitiv.\r\n\r\n##  Wie kann man die Sprachentwicklung von 2-jährigen Kindern fördern?\r\n\r\nEs gibt viele Möglichkeiten, um die Sprachentwicklung von 2-jährigen Kinder zu\r\nfördern. Eltern haben als direkte Bezugspersonen eine wichtige Rolle in der\r\nSprachentwicklung ihres Kindes.\r\n\r\n[ Aus unserem Shop\r\n\r\nVideo-Seminar Sprachentwicklung bedürfnisorientiert begleiten Was dein Kind\r\nbraucht, um Sprechen zu lernen und wie du es dabei bedürfnisorientiert\r\nbegleiten kannst, erfährst du im Video-Seminar mit Patricia Pomnitz. Was dein\r\nKind braucht, um Sprechen zu lernen und wie du es dabei bedü…  ](/shop/video-\r\nseminar-sprachentwicklung/)\r\n\r\n##  5 Tipps zur Förderung der Sprachentwicklung von 2-jährigen Kindern:\r\n\r\n  1. Sprechen auf ähnlichem Sprachniveau, in kurzen, einfachen Sätzen.\r\n  2. Dem Kind zugewandt sprechen, sich auf Höhe des Kindes begeben und dabei Blickkontakt halten.\r\n  3. Fehlerhafte Äußerungen des Kindes korrekt wiederholen (Das Kind sagt: „Da deht der Hundi“, eine korrekte Wiederholung ist: “Ja, ich sehe ihn. Da geht der Hund!“).\r\n  4. Vorlesen von altersentsprechenden Büchern und dabei gemeinsam Bilder und Handlungen im Buch in eigenen Worten wiederholen und besprechen.\r\n  5. Pro Tag 30 Minuten exklusive Zeit mit dem Kind verbringen, um bewusst diese und andere sprachfördernde Tipps umzusetzen.\r\n\r\n##  Ist es normal, dass mein 2-jähriges Kind nur Babysprache spricht\r\n\r\nWenn Kinder mit 2 Jahren nur Babysprache sprechen, ist das bedingt normal.\r\nEltern sollten je nach Alter ihres Kindes genauer hinhören: Babysprache\r\nbedeutet, dass Kinder kleinkindhaft sprechen, zum Beispiel Geräuschimitationen\r\nstatt Worte nutzen („Piep-Piep“ statt „Vogel“), Worte durch Lautmalereien\r\nersetzen („brum brum“ statt „Auto fahren“) oder Grundverben benutzen („Jakob\r\nspielen“).\r\n\r\nAb dem 24. Monat entwickelt sich die Sprache deines Kindes rasant. Zu diesem\r\nZeitpunkt sind Lautmalereien auch Abkürzungen oder Teilwörter („Nane“ statt\r\n„Banane“) noch normal. In den darauffolgenden Monaten sollte die rudimentäre\r\nBabysprache abnehmen. Statt „brum brum“ und „piep piep“ sollten „Auto“ und\r\n„Vogel“ genutzt werden. Leichte Lautunsicherheiten dürfen vorkommen („Vodel“\r\nstatt „Vogel“ oder „Ich tann laufen“). Wichtig ist vor allem, dass bei\r\n2-jährigen Kindern die Zwei- und Drei- Wortkombinationen zunehmen („Da Buch\r\nhaben“, „Hund kommt“). Babyartig und nur mit Hilfe eines Wortes, sollte im\r\nLaufe des 2. Lebensjahres kaum noch gesprochen werden („ham“, „wuff-wuff“).\r\n\r\n##  Das Wichtigste zur Sprachentwicklung bei 2-Jährigen Kindern\r\n\r\nAb dem 2. Geburtstag nehmen die Sprachfähigkeit und der Wortschatz deines\r\nKindes zügig zu. Längere Sätze werden gebildet. Es kann kurze\r\n[Phasen](https://www.elternleben.de/erziehung-und-\r\nfoerderung/sprachentwicklung-von-kindern/phasen-der-sprachentwicklung/) geben,\r\nin denen die Sprechmotivation und Plauderei weniger wird. Bei einer bis dahin\r\ngesunden Sprachentwicklung ist das normal. Zudem sind Kinder in ihrer aktiven\r\nKommunikations- und Sprechfreude sehr individuell.\r\n\r\nBist du dir unsicher, ob die Sprachentwicklung deines Kindes normal verläuft,\r\noder bemerkst du Auffälligkeiten, solltest du diese Fragen immer mit dem\r\nKinderarzt oder der Kinderärztin besprochen werden. Eine Sprachdiagnostik von\r\nExpert*innen wird empfohlen.\r\n\r\n\n\naHR0cHM6Ly9lbHRlcm5sZWJlbnBvY3RlYW01dXMuYmxvYi5jb3JlLndpbmRvd3MubmV0L2VsdGVybmxlYmVuLWRlLXdlYnNpdGUvZGF0YS9jb250ZW50L2VsdGVybmxlYmVuL2tsZWlua2luZC9lbnR3aWNrbHVuZy1mb2VyZGVydW5nL3NwcmFjaGVudHdpY2tsdW5nLWJpcy0yLWphaHJlLm1k0',
+              title: 'sprachentwicklung-bis-2-jahre.md',
+              url: 'https://elternlebenpocteam5us.blob.core.windows.net/elternleben-de-website/data/content/elternleben/kleinkind/entwicklung-foerderung/sprachentwicklung-bis-2-jahre.md',
+              filepath: 'sprachentwicklung-bis-2-jahre.md',
+              chunk_id: '0',
+            },
+          ],
+          intent:
+            '["Wie beeinflusst das Anschauen von Krimis am Abend den Schlaf von Kleinkindern?", "Welchen Einfluss hat Fernsehen am Abend auf den Schlaf eines 3-jährigen Kindes?", "Warum kann das gemeinsame Schauen von Krimis mit einem 3-jährigen Kind zu Einschlafproblemen führen?", "Wie wirken sich Krimis und Fernsehkonsum am Abend auf den Schlaf und die Einschlafzeit von Kleinkindern aus?"]',
+        },
+      },
+    },
+  ],
+  usage: {
+    prompt_tokens: 6786,
+    completion_tokens: 313,
+    total_tokens: 7099,
+  },
+  system_fingerprint: 'fp_3dfb47c1f3',
+};
 
-
-
-
-test('citation metadata', () => {
+test('citation metadata1', () => {
+  const message = response1.choices[0].message;
   console.log('processed', linkifyDocuments(message));
-})
+});
+
+test('citation metadata2', () => {
+  const message = response2.choices[0].message;
+  console.log('processed', linkifyDocuments(message));
+});
