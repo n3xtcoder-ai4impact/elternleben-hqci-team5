@@ -2,21 +2,21 @@ import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
 
 import initialMessages from './initialMessages';
 import { useState } from 'react';
-import MarkdownRenderer, { MarkdownRendererBlock } from '@rcb-plugins/markdown-renderer';
+import MarkdownRenderer, {
+  MarkdownRendererBlock,
+} from '@rcb-plugins/markdown-renderer';
 import { linkifyDocuments } from './linkifyDocuments';
 
 export const ElternlebenChatBot = () => {
-
   const plugins = [MarkdownRenderer()];
 
   const [messages, setMessages] = useState(initialMessages);
 
   const call_openai = async (params) => {
     console.log('params', params);
-    const messagesWithUserInput = params.userInput ? [
-      ...messages,
-      { role: 'user', content: params.userInput },
-    ] : messages;
+    const messagesWithUserInput = params.userInput
+      ? [...messages, { role: 'user', content: params.userInput }]
+      : messages;
     try {
       console.log('messagesWithUserInput', messagesWithUserInput);
       const response = await fetch(
@@ -38,7 +38,10 @@ export const ElternlebenChatBot = () => {
         ...messagesWithUserInput,
         { role: 'assistant', content },
       ];
-      console.log('messagesWithUserInputAndResponse', messagesWithUserInputAndResponse);
+      console.log(
+        'messagesWithUserInputAndResponse',
+        messagesWithUserInputAndResponse
+      );
 
       // try {
       // const linkedContent = linkifyDocuments(message);
@@ -96,6 +99,7 @@ export const ElternlebenChatBot = () => {
     footer: {
       buttons: [],
     },
+    voice: { disabled: false },
   };
 
   const elternlebenStyle = {
@@ -145,5 +149,5 @@ export const ElternlebenChatBot = () => {
     },
   };
 
-  return <ChatBot settings={settings} styles={styles} flow={flow}/>;
+  return <ChatBot settings={settings} styles={styles} flow={flow} />;
 };
