@@ -81,7 +81,9 @@ export const ElternlebenChatBot = () => {
       enabledPlaceholderText: 'Bitte gebe deine Frage ein ...',
     },
     chatHistory: {
-      disabled: true,
+      disabled: false,
+      viewChatHistoryButtonText: 'Chatverlauf',
+      autoLoad: true,
       storageKey: 'example_llm_conversation',
     },
     header,
@@ -99,6 +101,7 @@ export const ElternlebenChatBot = () => {
     footer: {
       buttons: [],
     },
+    audio: { disabled: false },
     voice: { disabled: false },
   };
 
