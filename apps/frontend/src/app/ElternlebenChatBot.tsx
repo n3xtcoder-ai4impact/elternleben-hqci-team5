@@ -101,7 +101,7 @@ export const ElternlebenChatBot = () => {
     footer: {
       buttons: [],
     },
-    audio: { disabled: false, language: 'de-DE' },
+    audio: { disabled: false, language: 'de-DE', defaultToggledOn: true },
     voice: { disabled: false, language: 'de-DE' },
   };
 
