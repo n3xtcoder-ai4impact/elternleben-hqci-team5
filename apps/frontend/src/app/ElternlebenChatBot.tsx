@@ -1,4 +1,4 @@
-import ChatBot, { Flow, Settings, Styles } from 'react-chatbotify';
+import ChatBot, { Button, Flow, Settings, Styles } from 'react-chatbotify';
 
 import initialMessages from './initialMessages';
 import { useState } from 'react';
@@ -99,7 +99,7 @@ export const ElternlebenChatBot = () => {
       disabled: true,
     },
     footer: {
-      buttons: [],
+      buttons: [Button.AUDIO_BUTTON],
     },
     audio: { disabled: false, language: 'de-DE', defaultToggledOn: true },
     voice: { disabled: false, language: 'de-DE' },
