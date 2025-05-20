@@ -152,5 +152,5 @@ export const ElternlebenChatBot = () => {
     },
   };
 
-  return <ChatBot settings={settings} styles={styles} flow={flow} plugins={plugins} />;
+  return <ChatBot settings={settings} styles={styles} flow={flow} />;
 };
