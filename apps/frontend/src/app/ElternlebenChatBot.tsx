@@ -76,7 +76,7 @@ export const ElternlebenChatBot = () => {
     buttons: [],
   };
   const settings: Settings = {
-    general: { embedded: true, showFooter: false },
+    general: { embedded: true, showFooter: true },
     chatInput: {
       enabledPlaceholderText: 'Bitte gebe deine Frage ein ...',
     },
@@ -99,6 +99,7 @@ export const ElternlebenChatBot = () => {
       disabled: true,
     },
     footer: {
+      text: 'Powered by Azure OpenAI, elternleben.de, react-chatbotify',
       buttons: [Button.AUDIO_BUTTON],
     },
     audio: { disabled: false, language: 'de-DE', defaultToggledOn: true },
