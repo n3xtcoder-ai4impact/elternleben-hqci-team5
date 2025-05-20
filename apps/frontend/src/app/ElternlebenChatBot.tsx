@@ -73,10 +73,10 @@ export const ElternlebenChatBot = () => {
     title: 'Leni, der Elternleben-Chatbot',
     showAvatar: true,
     avatar: 'assets/Check_nobg_75.png',
-    buttons: [],
+    buttons: [Button.AUDIO_BUTTON],
   };
   const settings: Settings = {
-    general: { embedded: true, showFooter: true },
+    general: { embedded: true, showFooter: false },
     chatInput: {
       enabledPlaceholderText: 'Bitte gebe deine Frage ein ...',
     },
@@ -100,7 +100,6 @@ export const ElternlebenChatBot = () => {
     },
     footer: {
       text: 'Powered by Azure OpenAI, elternleben.de, react-chatbotify',
-      buttons: [Button.AUDIO_BUTTON],
     },
     audio: { disabled: false, language: 'de-DE', defaultToggledOn: true },
     voice: { disabled: false, language: 'de-DE' },
