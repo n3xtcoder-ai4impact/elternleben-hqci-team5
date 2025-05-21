@@ -26,7 +26,7 @@ const MarkdownWrapper = ({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#2563eb", textDecoration: "underline", display: "inline-flex", alignItems: "center", gap: "0.25rem" }}
+            style={{ color: 'rgb(85, 165, 50)', textDecoration: "underline", display: "inline-flex", alignItems: "center", gap: "0.25rem" }}
             {...props}
           >
 
