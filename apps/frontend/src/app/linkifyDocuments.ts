@@ -21,30 +21,30 @@ export const getCitationMap = (citations: any) => {
 };
 
 export function linkifyDocuments(message: any) {
-  console.log('linkifyDocuments message', message);
+  // console.log('linkifyDocuments message', message);
   const { content, context } = message;
-  console.log('context', context);
-  console.log('content', content);
-  console.log('context.citations', context?.citations);
+  // console.log('context', context);
+  // console.log('content', content);
+  // console.log('context.citations', context?.citations);
   const docMap = getCitationMap(context?.citations ?? []);
-  console.log('docMap', docMap);
+  // console.log('docMap', docMap);
   const replacedContent = content.replace(
     /\[(doc\d+)\]/g,
     (match: string, docId: string) => {
-      console.log('  match', match);
-      console.log('  docId', docId);
+      // console.log('  match', match);
+      // console.log('  docId', docId);
 
       const metadata = docMap[docId];
-      console.log('  metadata', metadata);
+      // console.log('  metadata', metadata);
       if (metadata) {
         const { title, url } = metadata;
-        return `([${title}](${url}))`;
+        return `[${title}](${url})`;
       } else {
         return match;
       }
     }
   );
 
-  console.log('replacedContent', replacedContent);
+  // console.log('replacedContent', replacedContent);
   return replacedContent;
 }

@@ -18,7 +18,7 @@ const MarkdownWrapper = ({
         ol: ({ node, ...props }) => <ol style={{ paddingLeft: "1.5rem" }} {...props} />,
         li: ({ node, ...props }) => <li style={{ marginBottom: "0.3rem" }} {...props} />,
         a: ({ node, href, children, ...props }) => (
-          <a
+          <span>(<a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
@@ -27,7 +27,7 @@ const MarkdownWrapper = ({
           >
 
             {children}
-          </a>
+          </a>)</span>
         )
       }}>
 			{markdownText}

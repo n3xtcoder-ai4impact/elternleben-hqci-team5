@@ -19,12 +19,12 @@ export const ElternlebenChatBot = () => {
   const [messages, setMessages] = useState(initialMessages);
 
   const call_openai = async (params) => {
-    console.log('params', params);
+    // console.log('params', params);
     const messagesWithUserInput = params.userInput
       ? [...messages, { role: 'user', content: params.userInput }]
       : messages;
     try {
-      console.log('messagesWithUserInput', messagesWithUserInput);
+      console.log('sent', messagesWithUserInput);
       const response = await fetch(
         '/.netlify/functions/chat_completions_create',
         {
@@ -36,7 +36,7 @@ export const ElternlebenChatBot = () => {
         }
       );
       const chatCompletion = await response.json();
-      console.log(chatCompletion);
+      console.log('received', chatCompletion);
 
       const message = chatCompletion.choices[0].message;
       const content = message.content;
@@ -44,15 +44,15 @@ export const ElternlebenChatBot = () => {
         ...messagesWithUserInput,
         { role: 'assistant', content },
       ];
-      console.log(
-        'messagesWithUserInputAndResponse',
-        messagesWithUserInputAndResponse
-      );
+      // console.log(
+      //   'messagesWithUserInputAndResponse',
+      //   messagesWithUserInputAndResponse
+      // );
 
       let linkedContent = content;
       try {
-      linkedContent = linkifyDocuments(message);
-      console.log('linkedContent', linkedContent);
+        linkedContent = linkifyDocuments(message);
+        // console.log('linkedContent', linkedContent);
       } catch (error) {
         console.error('Error linking documents:', error);
       }
