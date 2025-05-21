@@ -101,7 +101,7 @@ export const ElternlebenChatBot = () => {
     footer: {
       text: 'Powered by Azure OpenAI, elternleben.de, react-chatbotify',
     },
-    audio: { disabled: false, language: 'de-DE', defaultToggledOn: true },
+    audio: { disabled: false, language: 'de-DE', defaultToggledOn: false },
     voice: { disabled: false, language: 'de-DE' },
   };
 
