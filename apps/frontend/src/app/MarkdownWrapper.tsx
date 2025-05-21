@@ -10,9 +10,7 @@ const MarkdownWrapper = ({
 }: {
 	children: React.ReactNode
 }) => {
-    // ensures that markdownText is a string
 	const markdownText = typeof children === "string" ? children : "";
-  console.log("MarkdownWrapper", markdownText);
 	return (
 		<ReactMarkdown
       components={{
@@ -27,7 +25,7 @@ const MarkdownWrapper = ({
             style={{ color: "#2563eb", textDecoration: "underline", display: "inline-flex", alignItems: "center", gap: "0.25rem" }}
             {...props}
           >
-            <span>🔗</span>
+
             {children}
           </a>
         )
