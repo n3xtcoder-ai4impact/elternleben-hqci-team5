@@ -6,7 +6,7 @@
     "name": "frontend"
   },
   "dependencies": {
-    "openai": "^4.95.0",
-    "react-chatbotify": "^2.0.0-beta.32"
+    "openai": "^4.100.0",
+    "react-chatbotify": "^2.0.0-beta.37"
   }
 }
