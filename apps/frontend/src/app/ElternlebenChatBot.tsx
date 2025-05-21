@@ -6,9 +6,15 @@ import MarkdownRenderer, {
   MarkdownRendererBlock,
 } from '@rcb-plugins/markdown-renderer';
 import { linkifyDocuments } from './linkifyDocuments';
+import MarkdownWrapper from './MarkdownWrapper';
 
 export const ElternlebenChatBot = () => {
-  const plugins = [MarkdownRenderer()];
+
+  const pluginConfig = {
+    markdownComponent: MarkdownWrapper,
+  }
+
+  const plugins = [MarkdownRenderer(pluginConfig)];
 
   const [messages, setMessages] = useState(initialMessages);
 
