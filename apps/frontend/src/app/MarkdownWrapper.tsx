@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 /**
  * Renders markdown content passed as children.
@@ -13,10 +14,13 @@ const MarkdownWrapper = ({
 	const markdownText = typeof children === "string" ? children : "";
 	return (
 		<ReactMarkdown
+      remarkPlugins={[remarkGfm]}
       components={{
         ul: ({ node, ...props }) => <ul style={{ paddingLeft: "1.5rem", listStyleType: "disc" }} {...props} />,
         ol: ({ node, ...props }) => <ol style={{ paddingLeft: "1.5rem" }} {...props} />,
         li: ({ node, ...props }) => <li style={{ marginBottom: "0.3rem" }} {...props} />,
+        strong: ({ node, ...props }) => <strong {...props} />,
+        em: ({ node, ...props }) => <em {...props} />,
         a: ({ node, href, children, ...props }) => (
           <span>(<a
             href={href}
