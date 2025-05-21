@@ -34,6 +34,9 @@ export function linkifyDocuments(message: any) {
       // console.log('  match', match);
       // console.log('  docId', docId);
 
+      // for now: remove [docX] from the message
+      return ''
+
       const metadata = docMap[docId];
       // console.log('  metadata', metadata);
       if (metadata) {
