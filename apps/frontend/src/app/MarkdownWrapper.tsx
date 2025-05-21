@@ -22,7 +22,7 @@ const MarkdownWrapper = ({
         strong: ({ node, ...props }) => <strong {...props} />,
         em: ({ node, ...props }) => <em {...props} />,
         a: ({ node, href, children, ...props }) => (
-          <span>(<a
+          <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
@@ -31,7 +31,7 @@ const MarkdownWrapper = ({
           >
 
             {children}
-          </a>)</span>
+          </a>
         )
       }}>
 			{markdownText}
