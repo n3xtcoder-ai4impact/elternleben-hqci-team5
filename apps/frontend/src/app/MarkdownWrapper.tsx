@@ -15,10 +15,23 @@ const MarkdownWrapper = ({
   console.log("MarkdownWrapper", markdownText);
 	return (
 		<ReactMarkdown
-			components={{
-				p: ({ ...props }) => <>{props.children}</>,
-			}}
-		>
+      components={{
+        ul: ({ node, ...props }) => <ul style={{ paddingLeft: "1.5rem", listStyleType: "disc" }} {...props} />,
+        ol: ({ node, ...props }) => <ol style={{ paddingLeft: "1.5rem" }} {...props} />,
+        li: ({ node, ...props }) => <li style={{ marginBottom: "0.3rem" }} {...props} />,
+        a: ({ node, href, children, ...props }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#2563eb", textDecoration: "underline", display: "inline-flex", alignItems: "center", gap: "0.25rem" }}
+            {...props}
+          >
+            <span>🔗</span>
+            {children}
+          </a>
+        )
+      }}>
 			{markdownText}
 		</ReactMarkdown>
 	);
