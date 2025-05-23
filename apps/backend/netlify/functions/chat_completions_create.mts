@@ -26,9 +26,10 @@ export default async (req: Request, context: Context) => {
   const createArgs = {
     messages,
     model,
+    past_messages: 10,
     max_tokens: 800,
-    temperature: 1,
-    top_p: 0.7,
+    temperature: 0.7,
+    top_p: 0.95,
     frequency_penalty: 0,
     presence_penalty: 0,
     stop: null,
