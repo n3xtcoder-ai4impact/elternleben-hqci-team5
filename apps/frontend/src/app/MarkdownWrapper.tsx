@@ -17,7 +17,7 @@ const MarkdownWrapper = ({
       remarkPlugins={[remarkGfm]}
       components={{
         ul: ({ node, ...props }) => <ul style={{ paddingLeft: "1.5rem", listStyleType: "disc" }} {...props} />,
-        ol: ({ node, ...props }) => <ol style={{ paddingLeft: "1.5rem" }} {...props} />,
+        ol: ({ node, ...props }) => <ol style={{ paddingLeft: "1.5rem", listStyleType: "1" }} {...props} />,
         li: ({ node, ...props }) => <li style={{ marginBottom: "0.3rem" }} {...props} />,
         strong: ({ node, ...props }) => <strong {...props} />,
         em: ({ node, ...props }) => <em {...props} />,
