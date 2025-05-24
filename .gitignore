@@ -9945,5 +9945,4 @@ node_modules/@types/node-forge/index.d.ts
 node_modules/@types/node-forge/LICENSE
 node_modules/@types/node-forge/package.json
 node_modules/@types/node-forge/README.md
-scripts/.env.elternleben
-scripts/.env.elternleben2
+scripts/.env*
